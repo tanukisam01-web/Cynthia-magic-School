@@ -1,0 +1,250 @@
+/* ====== พื้นฐานเว็บ ====== */
+
+body{
+
+margin:0;
+font-family:Poppins, sans-serif;
+background:#0b0b13;
+color:white;
+
+}
+
+h1,h2,h3,h4{
+
+font-family:Cinzel, serif;
+
+}
+
+
+/* ====== Header ====== */
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+
+padding:20px;
+
+background:#111122;
+
+border-bottom:1px solid #333;
+
+}
+
+nav a{
+
+margin:10px;
+color:#bbb;
+text-decoration:none;
+
+}
+
+nav a:hover{
+
+color:#7a6cff;
+
+}
+
+
+/* ====== Hero Section ====== */
+
+#hero{
+
+text-align:center;
+padding:120px 20px;
+
+background:linear-gradient(135deg,#111,#1c1c3a);
+
+}
+
+
+/* ====== Card Section ====== */
+
+.card{
+
+margin:40px auto;
+padding:30px;
+
+max-width:1000px;
+
+background:#141428;
+
+border-radius:12px;
+
+box-shadow:0 0 20px rgba(120,100,255,0.2);
+
+}
+
+
+/* ====== Button ====== */
+
+button{
+
+background:#6b5cff;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#8478ff;
+
+}
+
+
+/* ====== Grid ====== */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+
+gap:15px;
+
+}
+
+
+/* ====== Sacred Houses ====== */
+
+.group{
+
+margin-top:40px;
+font-size:20px;
+
+}
+
+.radiance{color:#ffd86b;}
+.shadow{color:#9c8cff;}
+.flame{color:#ff6a3d;}
+.water{color:#58b8ff;}
+.earth{color:#7bd67b;}
+.time{color:#ffe27a;}
+.valor{color:#ff7b7b;}
+
+
+/* ====== Blood Card ====== */
+
+.bloodcard{
+
+background:#1c1c33;
+
+padding:20px;
+
+border-radius:10px;
+
+transition:0.3s;
+
+}
+
+.bloodcard:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 20px rgba(120,120,255,0.4);
+
+}
+
+
+/* ====== Quest System ====== */
+
+.quest-info{
+
+opacity:0.8;
+margin-bottom:20px;
+
+}
+
+.quest-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+.quest-card{
+
+background:#1c1c33;
+padding:20px;
+
+border-radius:12px;
+
+transition:0.3s;
+
+}
+
+.quest-card:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 20px rgba(120,120,255,0.4);
+
+}
+
+.quest-card h3{
+
+font-size:20px;
+margin-bottom:5px;
+
+}
+
+
+/* ====== Quest ระดับสูง ====== */
+
+.legendary{
+
+border:1px solid gold;
+box-shadow:0 0 10px gold;
+
+}
+
+.special{
+
+border:1px solid red;
+box-shadow:0 0 15px red;
+
+}
+
+
+/* ====== Footer ====== */
+
+footer{
+
+text-align:center;
+
+padding:30px;
+
+color:#777;
+
+}
+
+
+/* ====== Responsive ====== */
+
+@media (max-width:768px){
+
+header{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+nav{
+
+margin-top:10px;
+
+}
+
+}
