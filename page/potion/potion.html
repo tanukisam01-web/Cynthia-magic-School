@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ตำราน้ำยารักษาแห่งCynthia</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⚗️</div>
+      <div class="brand-text">
+        <h1>ตำราน้ำยารักษาแห่งCynthia</h1>
+        <p>Healing Potions • Ingredients • Brewing Method</p>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="ค้นหาน้ำยา เช่น วิกเกนเวล / แมนเดรก..." />
+      <button id="clearBtn" title="ล้าง">✖</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>📌 รายการน้ำยา</h2>
+      <div id="potionList" class="potion-list"></div>
+
+      <div class="divider"></div>
+
+      <h2>🌿 วัตถุดิบทั้งหมด</h2>
+      <div id="ingredientMaster" class="ingredient-master"></div>
+    </aside>
+
+    <section class="content">
+      <div class="hero">
+        <h2>ยินดีต้อนรับสู่ตำราการปรุงยา</h2>
+        <p>
+          เว็บนี้รวม <b>สรรพคุณ</b>, <b>ส่วนผสม</b>, และ <b>วิธีทำแบบตำราฮอกวอตส์</b>
+          สามารถนำไปใช้ใน Roleplay / RPG ได้ทันที
+        </p>
+      </div>
+
+      <article id="potionDetail" class="potion-detail">
+        <div class="empty-state">
+          <h3>✨ เลือกน้ำยาจากด้านซ้าย</h3>
+          <p>หรือพิมพ์ค้นหา แล้วกดเลือกน้ำยาที่ต้องการ</p>
+        </div>
+      </article>
+
+      <footer class="footer">
+        <p>© Cynthia Healing Potions • Fan-made Lore for RP</p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
