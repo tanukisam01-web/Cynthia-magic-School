@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Chart</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Medical Chart</h1>
+    <p class="subtitle">ระบบบันทึกข้อมูลการรักษา</p>
+
+    <form id="chartForm">
+
+      <label>ชื่อผู้ป่วย</label>
+
+      <div class="name-row">
+        <input type="text" id="name" required>
+
+        <select id="caseColor">
+          <option value="🟢">🟢</option>
+          <option value="🟡">🟡</option>
+          <option value="🔴">🔴</option>
+        </select>
+      </div>
+
+      <label>ชื่อผู้รักษา</label>
+      <input type="text" id="doctor" required>
+
+      <label>อาการ</label>
+      <input type="text" id="symptoms" required>
+
+      <label>วิธีการรักษา</label>
+
+      <div id="treatmentStepsContainer">
+        <input type="text" class="treatment-step">
+      </div>
+
+      <button type="button" class="btn-secondary" onclick="addTreatmentStep()">
+        + เพิ่มขั้นตอน
+      </button>
+
+      <label>สถานะ</label>
+
+      <select id="status">
+        <option>ยังไม่ได้รับการรักษา</option>
+        <option>ได้รับการรักษาแล้ว</option>
+        <option>อยู่ระหว่างติดตามอาการ</option>
+      </select>
+
+      <label>การพักฟื้น</label>
+      <input type="text" id="recovery">
+
+      <label>ชื่อผู้บำบัด</label>
+      <input type="text" id="therapist" required>
+
+      <div class="button-group">
+
+        <button type="submit" class="btn-primary">
+          บันทึก
+        </button>
+
+        <button type="button" class="btn-secondary" onclick="copyToClipboard()">
+          📋 คัดลอก
+        </button>
+
+      </div>
+
+      <div id="copyAlert" class="alert">
+        คัดลอกเรียบร้อย
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
