@@ -1,0 +1,334 @@
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+/* ===== Design Tokens ===== */
+:root {
+    --accent:        #00e5a0;
+    --accent-dim:    rgba(0, 229, 160, 0.15);
+    --accent-glow:   rgba(0, 229, 160, 0.35);
+    --danger:        #ff4d6d;
+    --warn:          #fbbf24;
+
+    --bg:            #050810;
+    --surface:       #0c1220;
+    --surface-2:     #111827;
+    --border:        rgba(255, 255, 255, 0.06);
+    --border-accent: rgba(0, 229, 160, 0.3);
+
+    --text-hi:       #f0f4ff;
+    --text-mid:      #8b9ab8;
+    --text-lo:       #3d4f6b;
+
+    --sidebar-w:     260px;
+    --radius-lg:     20px;
+    --radius-md:     12px;
+    --radius-sm:     8px;
+
+    --ease:          cubic-bezier(0.4, 0, 0.2, 1);
+    --t-fast:        0.15s var(--ease);
+    --t-med:         0.3s var(--ease);
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Body ===== */
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse 60% 40% at 15% 10%, rgba(0, 229, 160, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 85% 90%, rgba(56, 100, 255, 0.06) 0%, transparent 60%);
+    color: var(--text-hi);
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* ===== Scanline overlay — subtle CRT texture ===== */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.04) 2px,
+        rgba(0, 0, 0, 0.04) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ===== Main Container ===== */
+.container {
+    width: 96vw;
+    height: 92dvh;
+    max-width: 1600px;
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow:
+        0 0 0 1px rgba(0, 229, 160, 0.04),
+        0 40px 80px -20px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    animation: containerIn 0.5s var(--ease) both;
+}
+
+@keyframes containerIn {
+    from { opacity: 0; transform: scale(0.98) translateY(12px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sidebar top accent line */
+.sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent 70%);
+}
+
+/* ===== Logo / Brand block ===== */
+.sidebar::before {
+    content: 'CYNTIA OS';
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid var(--border);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ===== Nav label ===== */
+.sidebar h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-lo);
+    padding: 20px 24px 10px;
+}
+
+/* ===== Nav list ===== */
+.sidebar ul {
+    list-style: none;
+    padding: 0 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* ===== Nav item ===== */
+.sidebar li {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    transition:
+        color var(--t-fast),
+        background var(--t-fast),
+        transform var(--t-fast);
+    user-select: none;
+    /* Emoji icon size */
+    line-height: 1.4;
+}
+
+/* Hover */
+.sidebar li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-hi);
+    transform: translateX(3px);
+}
+
+/* Active — set via JS */
+.sidebar li.active {
+    background: var(--accent-dim);
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* Active left bar */
+.sidebar li.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    border-radius: 0 3px 3px 0;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ===== Status strip at bottom of sidebar ===== */
+.sidebar-footer {
+    margin-top: auto;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-lo);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-footer .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ===== Content / Iframe Area ===== */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top bar above iframe */
+.content::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+    flex-shrink: 0;
+}
+
+/* Loading flash when iframe changes */
+.content.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 229, 160, 0.03);
+    animation: loadFlash 0.4s var(--ease) forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes loadFlash {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+#viewer {
+    width: 100%;
+    flex: 1;
+    border: none;
+    background: transparent;
+    display: block;
+}
+
+/* ===== Scrollbar (webkit) ===== */
+::-webkit-scrollbar         { width: 6px; height: 6px; }
+::-webkit-scrollbar-track   { background: transparent; }
+::-webkit-scrollbar-thumb   { background: var(--text-lo); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-mid); }
+
+/* ===== Responsive — Tablet ===== */
+@media (max-width: 1024px) {
+    :root { --sidebar-w: 220px; }
+}
+
+/* ===== Responsive — Mobile ===== */
+@media (max-width: 768px) {
+    body { align-items: flex-end; }
+
+    .container {
+        width: 100vw;
+        height: 100dvh;
+        border-radius: 0;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .sidebar::before,
+    .sidebar h3,
+    .sidebar-footer { display: none; }
+
+    .sidebar::after {
+        top: auto; bottom: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), transparent 70%);
+    }
+
+    .sidebar ul {
+        flex-direction: row;
+        padding: 10px 12px;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .sidebar ul::-webkit-scrollbar { display: none; }
+
+    .sidebar li {
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-bottom: 0;
+        font-size: 0.82rem;
+        padding: 8px 14px;
+    }
+
+    .sidebar li.active { transform: none; }
+    .sidebar li.active::before { display: none; }
+    .sidebar li:hover { transform: none; }
+
+    .content { flex: 1; }
+}
